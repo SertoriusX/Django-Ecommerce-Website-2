@@ -1,0 +1,54 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<header class="px-6 py-10 lg:py-20 bg-purple-500">
+    <div class="max-w-3xl mx-auto text-center">
+        <p class="mb-2 text-3xl lg:text-5xl text-white">Welcome to Nordic Homes</p>
+
+        <p class="mb-10 text-white">We sell furnitues for the modern home</p>
+
+        <a href="#" class="inline-block px-8 py-4 rounded-xl bg-white text-purple-500 hover:bg-gray-200">Start shopping</a>
+    </div>
+</header>
+
+<div class="max-w-6xl mx-auto py-2 px-6 xl:px-0">
+    <div class="products flex items-center flex-wrap">
+        {%for product in products%}
+            {% include "product/partials/product_list_item.html" %}
+
+            {%endfor%}
+        </div>
+
+       
+</div>
+<!--Paginator-->
+<div style="margin-left:800px;margin-bottom:50px;" class="container">
+    <nav  style="margin-left: 80px;" aria-label="Page navigation example">
+      <ul  class="pagination">
+        {% if products.has_previous %}
+  
+        <li  class="page-item"><a style="color: blueviolet;" class="page-link" href="?page={{ products.previous_page_number }}">Previous</a></li>
+  
+        {% endif %}
+        {%for i in products.paginator.page_range%}
+          {%if i == products.number%}
+          <li class="page-item active"><a style="background-color: blueviolet" class="page-link" href="">{{i}}</a></li>
+          {%else%}
+          <li class="page-item "><a style="color: blueviolet;" class="page-link" href="?page={{i}}">{{i}}</a></li>
+  
+          {%endif%}
+        {%endfor%}
+      {% if products.has_next %}
+  
+        <li class="page-item"><a style="color: blueviolet;" class="page-link" href="?page={{ products.next_page_number }}">Next</a></li>
+  
+        {% endif %}
+  
+      </ul>
+    </nav>
+  </div>
+
+
+
+
+{% endblock %}
