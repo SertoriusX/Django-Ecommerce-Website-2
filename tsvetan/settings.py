@@ -25,13 +25,17 @@ SECRET_KEY = 'django-insecure-ivlw2%bllcpl5d))m@a*=0$)95$ex!49!35ktgsk$+369!88tg
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
 ALLOWED_HOSTS = []
+
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_REDIRECT_URL = '/'
-SESSION_COKIE_AGE=86400
-CART_SESSION_ID='cart'
+LOGIN_URL = '/login/'
 
-# Application definition
+SESSION_COOKIE_AGE = 86400
+CART_SESSION_ID = 'cart'
+STRIPE_API_KEY_PUBLISHABLE = 'pk_test_51OYG51Kj5zWaz2WJEzmJhNGDokSniHqFEbmscb2Q3J1wVPrlAVxZ8TDcqkykmCyVVBQ4aDTk2jg2PfjAAyEgiNtQ00IGgzd1zi'
+STRIPE_API_KEY_HIDDEN = 'sk_test_51OYG51Kj5zWaz2WJjUaUF1xXI6IPfOHKHHXmn2Fur2Q2GyqTlt1L0Lg5q4eQx8N5ICjBmGEOzdRJAAa5sXXuFnh800cpOehxbc'# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -42,7 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
     'product',
-    "cart"
+    "cart",
+    'order'
 ]
 
 MIDDLEWARE = [
